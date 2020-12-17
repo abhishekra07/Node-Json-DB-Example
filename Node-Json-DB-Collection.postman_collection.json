@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Node-Json-DB-Collection",
+		"_postman_id": "a8353361-ca49-48fc-d0e7-218f9233af52",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"url": "localhost:3200/user/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Abhishek Rathore\",\n\t\"mobile\": \"2345678\",\n\t\"hobby\": \"Playing Cricket\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Base Url",
+			"request": {
+				"url": "localhost:3200",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"url": "localhost:3200/user/get",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"url": "localhost:3200/user/delete",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\" : \"ef15fd2c-1c38-4e55-b39a-1ec592755e0b\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
