@@ -23,9 +23,7 @@ app.get('/', function (req, res) {
 
 app.post('/user/add', (req, res) => {
   try {
-    const name = req.body.username
-    const mobile = req.body.mobile
-    const hobby = req.body.hobby
+    const { name, mobile, hobby } = req.body
     const id = uuid.v4()
     db.push(`/users/${id}`, { id, name, mobile, hobby }, true)
     res.status(200).json({messgae:'user added!',id})
@@ -42,6 +40,19 @@ app.get('/user/get', (req, res) => {
     users.push(value)
   })
   res.status(200).json({ users });
+})
+
+
+app.post('/user/delete', (req, res) => {
+  try {
+    const { userId } = req.body
+    // const userData = db.getData(`/users/${userId}`)
+    db.delete(`/users/${userId}`)
+    res.status(200).json({ message: 'user deleted!' });
+  } catch (e) {
+    res.status(404).json({ message: 'User Not Found' })
+  }
+
 })
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
