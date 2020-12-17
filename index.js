@@ -16,9 +16,7 @@ app.get('/', function (req, res) {
     message: "Welcome to the application. You can use below paths!",
     paths: "[ {'/user/add' to add user}]"
   })
-  res.send('Welcome to the application')
 })
-
 
 app.post('/user/add', (req, res) => {
   // console.log('body ',req.body);
@@ -28,11 +26,23 @@ app.post('/user/add', (req, res) => {
     const hobby = req.body.hobby
     const id = uuid.v4()
     db.push(`/users/${id}`, { id, name, mobile, hobby }, true)
-    return res.status(200).json({messgae:"user added!",id})
+    res.status(200).json({messgae:"user added!",id})
   } catch (e) {
     console.log("Error :- ",e);
     res.status(500).json({message: "Error in insert"})
   }
+})
+
+
+app.get('/user/get', (req, res) => {
+  const data = Object.values(db.getData('/users'));
+  data.map( value => {
+    console.log("value ",value);
+  })
+
+  // console.log("data :- ",data);
+
+  res.status(200).json({});
 })
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
